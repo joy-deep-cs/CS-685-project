@@ -5,13 +5,14 @@ import time
 from utils_icmc import set_category_field, set_time_field
 from tqdm import tqdm
 user_agent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
+user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
 headers={'User-Agent':user_agent,} 
 
 url = "http://api.ichangemycity.com/api/complaints/list?page="
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+es = Elasticsearch([{'host': 'localhost', 'port': 6000}])
 
 def check_duplicate(new_id):
-    r = requests.get('http://localhost:9200') 
+    r = requests.get('http://localhost:6000') 
     if r.status_code == 200:
         query = {
                     "query":{
